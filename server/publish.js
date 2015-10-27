@@ -11,3 +11,7 @@ Meteor.publish("userProfiles", function () {
 	console.log('publishing '+cursor.count());
 	return cursor;
 });
+
+Meteor.publish("interests",function() {
+	return Interests.find({owner: this.userId});
+})

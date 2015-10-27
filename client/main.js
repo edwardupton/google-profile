@@ -1,6 +1,6 @@
 Template.devtank.onCreated(function() {
-	console.log('subscribe')
 	Meteor.subscribe("userProfiles");
+	Meteor.subscribe("interests");
 });
 
 Template.devtank.helpers({
@@ -10,11 +10,11 @@ Template.devtank.helpers({
 });
 
 Template.devtank.events({
-	"click button" : function() {
+	"click button.register" : function() {
 		var permissions = {
 		    requestPermissions: "profile",
 		    include_granted_scopes: true,
-		    loginStyle: 'redirect' //will work on mobile
+		    loginStyle: 'popup' //won't work on mobile
 		}
 
 		Meteor.loginWithGoogle(permissions,function (err) {
@@ -27,5 +27,11 @@ Template.devtank.events({
 	"click .signout" : function(e) {
 		e.preventDefault();
 		Meteor.logout();
+	}
+});
+
+Template.editInterests.helpers({
+	interest: function() {
+		return Interests.findOne();
 	}
 });
