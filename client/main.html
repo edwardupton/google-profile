@@ -1,0 +1,24 @@
+<head>
+  <title>devtank</title>
+</head>
+
+<body>
+  <h1>Welcome to DevTank!</h1>
+
+  {{> devtank}}
+</body>
+
+<template name="devtank">
+	{{#unless currentUser}}
+		<button class="btn btn-lrg btn-primary">Register</button>
+
+	{{/unless}}
+	<div>
+		{{#each users}}
+			<img src="{{profile.picture}}"/>
+		{{/each}}
+	</div>
+	{{#if currentUser}}
+		<a href="#" class="signout">Log out</a>
+	{{/if}}
+</template>
