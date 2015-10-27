@@ -1,15 +1,14 @@
-Template.devtank.onCreated(function() {
+Template.login.onCreated(function() {
 	Meteor.subscribe("userProfiles");
-	Meteor.subscribe("interests");
 });
 
-Template.devtank.helpers({
+Template.login.helpers({
 	users: function() {
 		return Meteor.users.find();
 	}
 });
 
-Template.devtank.events({
+Template.login.events({
 	"click button.register" : function() {
 		var permissions = {
 		    requestPermissions: "profile",
@@ -28,6 +27,10 @@ Template.devtank.events({
 		e.preventDefault();
 		Meteor.logout();
 	}
+});
+
+Template.editInterests.onCreated(function(){
+	Meteor.subscribe("interests");
 });
 
 Template.editInterests.helpers({

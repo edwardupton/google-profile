@@ -3,25 +3,25 @@
 </head>
 
 <body>
-  <h1>Welcome to DevTank!</h1>
+  <h1>Welcome to FullStack!</h1>
 
-  {{> devtank}}
+  {{> login}}
 </body>
 
-<template name="devtank">
-	{{#unless currentUser}}
-		<button class="btn btn-lrg btn-primary register">Register</button>
-
-	{{/unless}}
-	<div>
+<template name="login">
+	<div class="user-list">
 		{{#each users}}
 			<img src="{{profile.picture}}"/>
 		{{/each}}
 	</div>
+
 	{{#if currentUser}}
 		<a href="#" class="signout">Log out</a>
   		{{> editInterests}}
+  	{{else}}
+  		<button class="btn btn-lrg btn-primary register">Register</button>
 	{{/if}}
+
 </template>
 
 <template name="editInterests">
